@@ -8,7 +8,7 @@ use tokio::runtime::Runtime;
 mod tweeter;
 
 pub const PAUSE_EVENT_LOOP_FOR_IN_SECONDS: u64 = 15 * 60;
-pub const DELAY_BETWEEN_TWEETS_IN_SECONDS: u64 = 10;
+pub const DELAY_BETWEEN_TWEETS_IN_SECONDS: u64 = 5;
 
 /// Start the twitter service when the http server starts up.
 /// It will post the list of new ATS repos (if available)

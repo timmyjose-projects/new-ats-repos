@@ -1,6 +1,6 @@
 # New ATS Repos Bot
 
-This is the source code for the Twitter Bot (@NewATSRepos) that periodically queries Github for new Zig repositories, and then posts a link to the 
+This is the source code for the Twitter Bot (@NewATSRepos) that periodically queries Github for new ATS repositories, and then posts a link to the 
 repository (along with a brief summary) in a tweet. 
 
 This bot was inspired by the Common Lisp bot (@NewLispRepos) created by Zach Beane.

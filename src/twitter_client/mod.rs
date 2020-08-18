@@ -11,12 +11,12 @@ pub const PAUSE_EVENT_LOOP_FOR_IN_SECONDS: u64 = 15 * 60;
 pub const DELAY_BETWEEN_TWEETS_IN_SECONDS: u64 = 5;
 
 /// Start the twitter service when the http server starts up.
-/// It will post the list of new Idris repos (if available)
+/// It will post the list of new ATS repos (if available)
 /// once a day at midnight UTC.
 /// Also planned is to support responding to follows,
 /// direct messages, retweets, favouriting, as well as
-/// periodically tweeting random Idris facts.
-/// Possibly also tweet about major releases of Idris repos.
+/// periodically tweeting random ATS facts.
+/// Possibly also tweet about major releases of ATS repos.
 pub fn start_service() {
     let mut rt = Runtime::new().unwrap();
     rt.block_on(run());
@@ -43,10 +43,10 @@ async fn run() {
     }
 }
 
-/// query github for new Idris repos and attempt to
+/// query github for new ATS repos and attempt to
 /// tweet them
 async fn query_repos_and_tweet(token: &Token) {
-    if let Some(maybe_repos) = gh::get_new_idris_repos() {
+    if let Some(maybe_repos) = gh::get_new_ats_repos() {
         if let Ok(new_repos) = maybe_repos {
             for repo in new_repos {
                 match tweeter::tweet_new_repo(&token, &repo).await {
@@ -56,7 +56,7 @@ async fn query_repos_and_tweet(token: &Token) {
                 thread::sleep(Duration::from_secs(DELAY_BETWEEN_TWEETS_IN_SECONDS));
             }
         } else {
-            info!("No newly-created Idris repos found for now...");
+            info!("No newly-created ATS repos found for now...");
         }
     }
 }

@@ -1,5 +1,5 @@
 [package]
-name = "new-idris-repos"
+name = "new-ats-repos"
 version = "0.1.0"
 authors = ["Timmy Jose <zoltan.jose@gmail.com>"]
 edition = "2018"

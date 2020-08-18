@@ -1,5 +1,5 @@
 pub mod twitter {
-    use crate::errors::{GenError, GenResult, NewIdrisRepoError, NewIdrisRepoErrorKind};
+    use crate::errors::{GenError, GenResult, NewATSRepoError, NewATSRepoErrorKind};
     use egg_mode::Token;
     use std::env;
 
@@ -29,8 +29,8 @@ pub mod twitter {
             );
 
             if let egg_mode::error::Error::TwitterError(_, twitter_errors) = e {
-                let error = NewIdrisRepoError::from(twitter_errors.errors[0].code);
-                if error.kind == NewIdrisRepoErrorKind::CouldNotLoginInternalError {
+                let error = NewATSRepoError::from(twitter_errors.errors[0].code);
+                if error.kind == NewATSRepoErrorKind::CouldNotLoginInternalError {
                     error!(
                         "Could not login due to internal server error: {:?}",
                         error.to_string()

@@ -1,6 +1,6 @@
-# New Idris repos bot
+# New ATS repos bot
 
-This is the source code for the Twitter Bot (@NewIdrisRepos) that periodically queries Github for new Idris repositories, and then posts a link to the 
+This is the source code for the Twitter Bot (@NewATSRepos) that periodically queries Github for new ATS repositories, and then posts a link to the 
 repository (along with a brief summary) in a tweet. 
 
 This bot was inspired by the Common Lisp bot (@NewLispRepos) created by Zach Beane.

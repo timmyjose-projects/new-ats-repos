@@ -5,12 +5,12 @@ pub type GenError = Box<dyn std::error::Error>;
 pub type GenResult<T> = std::result::Result<T, GenError>;
 
 #[derive(Debug)]
-pub struct NewIdrisRepoError {
-    pub kind: NewIdrisRepoErrorKind,
+pub struct NewATSRepoError {
+    pub kind: NewATSRepoErrorKind,
 }
 
 #[derive(Debug, PartialEq)]
-pub enum NewIdrisRepoErrorKind {
+pub enum NewATSRepoErrorKind {
     AlreadyFavorited,
     AlreadyRetweeted,
     CannotReplyToDeletedOrInvisibleTweet,
@@ -21,32 +21,30 @@ pub enum NewIdrisRepoErrorKind {
     UnknownError,
 }
 
-impl From<NewIdrisRepoErrorKind> for NewIdrisRepoError {
-    fn from(kind: NewIdrisRepoErrorKind) -> NewIdrisRepoError {
-        NewIdrisRepoError { kind: kind }
+impl From<NewATSRepoErrorKind> for NewATSRepoError {
+    fn from(kind: NewATSRepoErrorKind) -> NewATSRepoError {
+        NewATSRepoError { kind: kind }
     }
 }
 
-impl From<i32> for NewIdrisRepoError {
-    fn from(code: i32) -> NewIdrisRepoError {
+impl From<i32> for NewATSRepoError {
+    fn from(code: i32) -> NewATSRepoError {
         match code {
-            131 => NewIdrisRepoError::from(NewIdrisRepoErrorKind::CouldNotLoginInternalError),
-            139 => NewIdrisRepoError::from(NewIdrisRepoErrorKind::AlreadyFavorited),
-            185 => NewIdrisRepoError::from(NewIdrisRepoErrorKind::PostingLimitReached),
-            186 => NewIdrisRepoError::from(NewIdrisRepoErrorKind::TweetIsTooLong),
-            327 => NewIdrisRepoError::from(NewIdrisRepoErrorKind::AlreadyRetweeted),
-            385 => {
-                NewIdrisRepoError::from(NewIdrisRepoErrorKind::CannotReplyToDeletedOrInvisibleTweet)
-            }
-            421 => NewIdrisRepoError::from(NewIdrisRepoErrorKind::TweetIsUnavailable),
-            _ => NewIdrisRepoError::from(NewIdrisRepoErrorKind::UnknownError),
+            131 => NewATSRepoError::from(NewATSRepoErrorKind::CouldNotLoginInternalError),
+            139 => NewATSRepoError::from(NewATSRepoErrorKind::AlreadyFavorited),
+            185 => NewATSRepoError::from(NewATSRepoErrorKind::PostingLimitReached),
+            186 => NewATSRepoError::from(NewATSRepoErrorKind::TweetIsTooLong),
+            327 => NewATSRepoError::from(NewATSRepoErrorKind::AlreadyRetweeted),
+            385 => NewATSRepoError::from(NewATSRepoErrorKind::CannotReplyToDeletedOrInvisibleTweet),
+            421 => NewATSRepoError::from(NewATSRepoErrorKind::TweetIsUnavailable),
+            _ => NewATSRepoError::from(NewATSRepoErrorKind::UnknownError),
         }
     }
 }
 
-impl Error for NewIdrisRepoError {}
+impl Error for NewATSRepoError {}
 
-impl fmt::Display for NewIdrisRepoError {
+impl fmt::Display for NewATSRepoError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "{}", self)
     }

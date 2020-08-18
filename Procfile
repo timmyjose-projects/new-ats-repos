@@ -1,1 +1,1 @@
-worker: ./target/release/new-ats-repos
+worker: ./target/release/new-idris-repos
